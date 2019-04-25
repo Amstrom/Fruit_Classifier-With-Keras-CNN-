@@ -5,7 +5,6 @@ Created on Wed Apr 24 19:56:19 2019
 @author: Sahan Dilshan
 """
 
-from __future__ import print_function
 import keras
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
