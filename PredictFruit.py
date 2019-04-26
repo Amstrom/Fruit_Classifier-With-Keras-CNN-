@@ -61,50 +61,25 @@ def getRandomImage(path, img_width, img_height):
 files = []
 predictions = []
 true_labels = []
-# predicting images
-#for i in range(0, 10):
-#    path = './fruits/validation/' 
-#    img, final_path, true_label = getRandomImage(path, img_width, img_height)
-#    files.append(final_path)
-#    true_labels.append(true_label)
-#    x = image.img_to_array(img)
-#    x = x * 1./255
-#    x = np.expand_dims(x, axis=0)
-#    images = np.vstack([x])
-#    classes = model.predict_classes(images)
-#    predictions.append(classes)
-#    
-#for i in range(0, len(files)):
-#    image = cv2.imread((files[i]))
-#    draw_test("Prediction", class_labels[predictions[i][0]], image, true_labels[i])
-#    cv2.waitKey(0)
-
-model.summary()
-#r_324_100
-preImg = image.load_img('apple.png', target_size=(32, 32))
-preImg = image.img_to_array(preImg)
-
-
-#preImg = preImg.reshape((1, preImg.shape[0], preImg.shape[1], preImg.shape[2]))
-#x = model.predict_classes(preImg)
-#
-#print(class_labels[x[0]])
-
-preImg = preImg.astype("float") / 255.0
-preImg = np.expand_dims(preImg, axis=0)
-
-y = model.predict(preImg)
-#x = x * 1./255
-#x = np.expand_dims(x, axis=0)
-#images = np.vstack([x])
-for i in range(0,81):
-    print(class_labels[i]," :",y[0][i]*1000)
+#predicting images
+for i in range(0, 10):
+    path = './fruits/validation/' 
+    img, final_path, true_label = getRandomImage(path, img_width, img_height)
+    files.append(final_path)
+    true_labels.append(true_label)
+    x = image.img_to_array(img)
+    x = x * 1./255
+    x = np.expand_dims(x, axis=0)
+    images = np.vstack([x])
+    classes = model.predict_classes(images)
+    predictions.append(classes)
     
+for i in range(0, len(files)):
+    img2 = cv2.imread((files[i]))
+    draw_test("Prediction", class_labels[predictions[i][0]], img2, true_labels[i])
+    cv2.waitKey(0)
 
-pre = [i*100 for i in y[0] if i*100>10]
 
-for d in pre:
-    print(d)
 cv2.destroyAllWindows()
 
 
